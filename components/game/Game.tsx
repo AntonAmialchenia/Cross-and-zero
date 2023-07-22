@@ -1,9 +1,10 @@
 import { ResetButton } from "./ResetButton";
-import { GameCell } from "./game-cell";
-import { GameInfo } from "./game-info";
-import { useGameState } from "./use-game-state";
+import { GameCell } from "./GameCell";
+import { GameInfo } from "./GameInfo";
+import { useGameState } from "./useGameState";
+import { FC } from "react";
 
-export function Game() {
+export const Game: FC = () => {
   const {
     cells,
     currentStep,
@@ -34,4 +35,4 @@ export function Game() {
       <ResetButton onClick={resetGame} />
     </div>
   );
-}
+};

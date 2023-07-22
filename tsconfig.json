@@ -31,7 +31,7 @@
     "**/*.tsx",
     "postcss.config.js",
     "tailwind.config.js",
-    "components/game/use-game-state.js"
+    "components/game/useGameState.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SYMBOL_O, SYMBOL_X } from "./constants";
 
-const computeWinner = (cells) => {
+const computeWinner = (cells: number[] | null[]) => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -34,13 +34,13 @@ export function useGameState() {
     null,
   ]);
   const [currentStep, setCurrentStep] = useState(SYMBOL_O);
-  const [winnerSequence, setWinnerSequence] = useState();
+  const [winnerSequence, setWinnerSequence] = useState<null[] | number[]>([]);
 
   const winnerSymbol = winnerSequence ? cells[winnerSequence[0]] : undefined;
   const isDraw = !winnerSequence && cells.filter((value) => value).length === 9;
-  const getWinnerCell = (index) => winnerSequence?.includes(index);
+  const getWinnerCell = (index: number) => winnerSequence!.includes(index);
 
-  const toggleCell = (index) => {
+  const toggleCell = (index: number) => {
     if (cells[index] || winnerSequence) {
       return;
     }
@@ -56,7 +56,7 @@ export function useGameState() {
   const resetGame = () => {
     setCells(Array.from({ length: 9 }, () => null));
     setCurrentStep(SYMBOL_X);
-    setWinnerSequence(undefined);
+    setWinnerSequence(Array.from({ length: 9 }, () => null));
   };
 
   return {

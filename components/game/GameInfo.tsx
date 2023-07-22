@@ -1,6 +1,17 @@
-import { GameSymbol } from "./game-symbol";
+import { GameSymbol } from "./GameSymbol";
+import { FC } from "react";
 
-export function GameInfo({ isDraw, winnerSymbol, currentStep }) {
+interface GameInfoProps {
+  isDraw: boolean;
+  winnerSymbol: string;
+  currentStep: string;
+}
+
+export const GameInfo: FC<GameInfoProps> = ({
+  isDraw,
+  winnerSymbol,
+  currentStep,
+}) => {
   if (isDraw) {
     return <div className="mb-2.5">Ничья</div>;
   }
@@ -18,4 +29,4 @@ export function GameInfo({ isDraw, winnerSymbol, currentStep }) {
       Ход: <GameSymbol symbol={currentStep} />
     </div>
   );
-}
+};
