@@ -1,8 +1,18 @@
 import type { AppProps } from "next/app";
+import { Inter } from "next/font/google";
 import "../styles/globals.css";
 
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
+});
+
 const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  return (
+    <div className={inter.className}>
+      <Component {...pageProps} />
+    </div>
+  );
 };
 
 export default App;
