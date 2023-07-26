@@ -1,8 +1,13 @@
 import React, { FC } from "react";
 
-export const Zero: FC = () => {
+interface ZeroProps {
+  className?: string;
+}
+
+export const Zero: FC<ZeroProps> = ({ className }) => {
   return (
     <svg
+      className={className}
       width="12"
       height="12"
       viewBox="0 0 12 12"
