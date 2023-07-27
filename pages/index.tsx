@@ -1,15 +1,16 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Header } from "../components/Header";
 import { GameField, GameInfo, GameTitle } from "../components/Game";
 
 const HomePage: FC = () => {
+  const [playersCount] = useState(4);
   return (
     <div className=" bg-slate-50 min-h-screen">
       <Header />
       <main className=" pt-6 mx-auto w-max">
-        <GameTitle />
-        <GameInfo className="mt-4" />
-        <GameField className="mt-6" />
+        <GameTitle playersCount={playersCount} />
+        <GameInfo playersCount={playersCount} className="mt-4" />
+        <GameField playersCount={playersCount} className="mt-6" />
       </main>
     </div>
   );

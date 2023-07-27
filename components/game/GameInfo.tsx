@@ -1,43 +1,63 @@
 import clsx from "clsx";
 import React, { FC } from "react";
-import { Profile } from "../Profile";
-import { Cross } from "./icons/Cross";
 
+import { PlayerInfo } from "./PlayerInfo";
+import { GAME_SYMBOLS } from "./constants";
+
+import avatar1 from "../Profile/img/1.png";
+import avatar2 from "../Profile/img/2.png";
+import avatar3 from "../Profile/img/3.png";
+import avatar4 from "../Profile/img/4.png";
+
+const players = [
+  {
+    id: 1,
+    name: "Paromovevg",
+    rating: "1230",
+    avatar: avatar1,
+    symbol: GAME_SYMBOLS.CROSS,
+  },
+  {
+    id: 2,
+    name: "VereIntedinglapotur",
+    rating: "850",
+    avatar: avatar2,
+    symbol: GAME_SYMBOLS.ZERO,
+  },
+  {
+    id: 3,
+    name: "Lara",
+    rating: "1400",
+    avatar: avatar3,
+    symbol: GAME_SYMBOLS.TRINGLE,
+  },
+  {
+    id: 4,
+    name: "Додик",
+    rating: "760",
+    avatar: avatar4,
+    symbol: GAME_SYMBOLS.SQUARE,
+  },
+];
 interface GameInfoProps {
   className: string;
+  playersCount: number;
 }
 
-export const GameInfo: FC<GameInfoProps> = ({ className }) => {
+export const GameInfo: FC<GameInfoProps> = ({ className, playersCount }) => {
   return (
     <div
       className={clsx(
         className,
-        " bg-white rounded-2xl shadow-md px-8 py-4 flex justify-between",
+        " bg-white rounded-2xl shadow-md px-8 py-4 grid grid-cols-2 gap-3 justify-between",
       )}>
-      <div className="flex gap-3 items-center">
-        <div className=" relative">
-          <Profile className="w-44" />
-          <div className="flex justify-center items-center w-5 h-5 bg-white shadow rounded-full absolute -left-1 -top-1">
-            <Cross />
-          </div>
-        </div>
-        <div className="w-px h-6 bg-slate-200" />
-        <div className=" text-lg font-semibold leading-tight text-slate-900">
-          01:08
-        </div>
-      </div>
-      <div className="flex gap-3 items-center">
-        <div className=" text-lg font-semibold leading-tight text-orange-600">
-          00:08
-        </div>
-        <div className=" relative">
-          <Profile className="w-44" />
-          <div className="flex justify-center items-center w-5 h-5 bg-white shadow rounded-full absolute -left-1 -top-1">
-            <Cross />
-          </div>
-        </div>
-        <div className="w-px h-6 bg-slate-200" />
-      </div>
+      {players.slice(0, playersCount).map((player, index) => (
+        <PlayerInfo
+          key={player.id}
+          playerInfo={player}
+          isRight={index % 2 === 1}
+        />
+      ))}
     </div>
   );
 };

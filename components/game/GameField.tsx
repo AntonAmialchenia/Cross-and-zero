@@ -9,10 +9,12 @@ import { useGameState } from "./hooks/useGameState";
 
 interface GameFieldProps {
   className: string;
+  playersCount: number;
 }
 
-export const GameField: FC<GameFieldProps> = ({ className }) => {
-  const { cells, nextMove, handleCellClick, currentMove } = useGameState();
+export const GameField: FC<GameFieldProps> = ({ className, playersCount }) => {
+  const { cells, nextMove, handleCellClick, currentMove } =
+    useGameState(playersCount);
 
   const actions = (
     <>

@@ -5,7 +5,11 @@ import { Star } from "./icons/Star";
 import { User } from "./icons/User";
 import { Time } from "./icons/Time";
 
-export const GameTitle: FC = () => {
+interface GmaeTitleProps {
+  playersCount: number;
+}
+
+export const GameTitle: FC<GmaeTitleProps> = ({ playersCount }) => {
   return (
     <div className="pl-2  text-xs leading-tight ">
       <Link
@@ -18,7 +22,8 @@ export const GameTitle: FC = () => {
       <div className="flex items-center gap-3 text-xs leading-tight text-slate-400">
         <Star />
         <div className="flex items-center gap-1">
-          <User />2
+          <User />
+          {playersCount}
         </div>
         <div className="flex items-center gap-1">
           <Time />1 мин на ход
