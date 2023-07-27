@@ -1,8 +1,13 @@
 import React, { FC } from "react";
 
-export const Cross: FC = () => {
+interface CrossProps {
+  className?: string;
+}
+
+export const Cross: FC<CrossProps> = ({ className }) => {
   return (
     <svg
+      className={className}
       width="12"
       height="12"
       viewBox="0 0 12 12"

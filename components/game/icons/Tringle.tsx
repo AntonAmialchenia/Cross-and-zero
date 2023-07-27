@@ -1,8 +1,13 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 
-export const Tringle:FC = () => {
+interface TringleProps {
+  className?: string;
+}
+
+export const Tringle: FC<TringleProps> = ({ className }) => {
   return (
     <svg
+      className={className}
       width="12"
       height="12"
       viewBox="0 0 12 12"
