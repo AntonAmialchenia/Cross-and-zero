@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { StaticImageData } from "next/image";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Profile } from "../Profile";
 import { GameSymbol } from "./GameSymbol";
 
@@ -13,9 +13,41 @@ interface PlayerInfoProps {
     symbol: string;
   };
   isRight: boolean;
+  isTimerRunning: boolean;
 }
 
-export const PlayerInfo: FC<PlayerInfoProps> = ({ playerInfo, isRight }) => {
+export const PlayerInfo: FC<PlayerInfoProps> = ({
+  playerInfo,
+  isRight,
+  isTimerRunning,
+}) => {
+  const [seconds, setSeconds] = useState(60);
+
+  const minutesString = String(Math.floor(seconds / 60)).padStart(2, "0");
+  const secondsString = String(seconds % 60).padStart(2, "0");
+
+  const isDanger = seconds < 10;
+
+  const getTimerColor = () => {
+    if (isTimerRunning) {
+      return isDanger ? " text-orange-600" : "text-slate-900";
+    }
+    return "text-slate-200";
+  };
+
+  useEffect(() => {
+    if (isTimerRunning) {
+      const interval = setInterval(() => {
+        setSeconds((prev) => Math.max(prev - 1, 0));
+      }, 1000);
+
+      return () => {
+        clearInterval(interval);
+        setSeconds(60);
+      };
+    }
+  }, [isTimerRunning]);
+
   return (
     <div className="flex gap-3 items-center">
       <div className={clsx(" relative", isRight && "order-3")}>
@@ -34,8 +66,9 @@ export const PlayerInfo: FC<PlayerInfoProps> = ({ playerInfo, isRight }) => {
         className={clsx(
           " text-lg font-semibold leading-tight",
           isRight && "order-1",
+          getTimerColor(),
         )}>
-        00:08
+        {minutesString}:{secondsString}
       </div>
     </div>
   );

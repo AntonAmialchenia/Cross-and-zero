@@ -5,17 +5,24 @@ import { GameFieldLayout } from "./GameFieldLayout";
 import { GameMoveInfo } from "./GameMoveInfo";
 import { GameGrid } from "./GameGrid";
 import { GameCell } from "./GameCell";
-import { useGameState } from "./hooks/useGameState";
 
 interface GameFieldProps {
   className: string;
   playersCount: number;
+  cells: any[];
+  nextMove: string;
+  handleCellClick: (index: number) => void;
+  currentMove: string;
 }
 
-export const GameField: FC<GameFieldProps> = ({ className, playersCount }) => {
-  const { cells, nextMove, handleCellClick, currentMove } =
-    useGameState(playersCount);
-
+export const GameField: FC<GameFieldProps> = ({
+  className,
+  playersCount,
+  cells,
+  nextMove,
+  handleCellClick,
+  currentMove,
+}) => {
   const actions = (
     <>
       <UiButton size="md" variant="primary">

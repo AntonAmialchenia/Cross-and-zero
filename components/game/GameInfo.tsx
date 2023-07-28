@@ -42,9 +42,14 @@ const players = [
 interface GameInfoProps {
   className: string;
   playersCount: number;
+  currentMove: string;
 }
 
-export const GameInfo: FC<GameInfoProps> = ({ className, playersCount }) => {
+export const GameInfo: FC<GameInfoProps> = ({
+  className,
+  playersCount,
+  currentMove,
+}) => {
   return (
     <div
       className={clsx(
@@ -56,6 +61,7 @@ export const GameInfo: FC<GameInfoProps> = ({ className, playersCount }) => {
           key={player.id}
           playerInfo={player}
           isRight={index % 2 === 1}
+          isTimerRunning={currentMove === player.symbol}
         />
       ))}
     </div>
