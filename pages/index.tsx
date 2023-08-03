@@ -8,8 +8,8 @@ import {
 } from "../components/Game";
 
 const HomePage: FC = () => {
-  const [playersCount] = useState(4);
-  const { cells, nextMove, handleCellClick, currentMove } =
+  const [playersCount] = useState(2);
+  const { cells, nextMove, handleCellClick, currentMove, winnerSequence } =
     useGameState(playersCount);
   return (
     <div className=" bg-slate-50 min-h-screen">
@@ -27,6 +27,7 @@ const HomePage: FC = () => {
           handleCellClick={handleCellClick}
           currentMove={currentMove}
           playersCount={playersCount}
+          winnerSequence={winnerSequence}
           className="mt-6"
         />
       </main>
