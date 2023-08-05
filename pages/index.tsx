@@ -6,11 +6,19 @@ import {
   GameTitle,
   useGameState,
 } from "../components/Game";
+import { GameSymbol } from "../components/Game/GameSymbol";
 
 const HomePage: FC = () => {
-  const [playersCount] = useState(2);
-  const { cells, nextMove, handleCellClick, currentMove, winnerSequence } =
-    useGameState(playersCount);
+  const [playersCount] = useState(4);
+  const {
+    cells,
+    nextMove,
+    handleCellClick,
+    currentMove,
+    winnerSequence,
+    handlePlayerTimeOver,
+    winnerSymbol,
+  } = useGameState(playersCount);
   return (
     <div className=" bg-slate-50 min-h-screen">
       <Header />
@@ -19,8 +27,16 @@ const HomePage: FC = () => {
         <GameInfo
           currentMove={currentMove}
           playersCount={playersCount}
+          isWinner={!!winnerSymbol}
+          onPlayerTimeOver={handlePlayerTimeOver}
           className="mt-4"
         />
+        {winnerSymbol && (
+          <div>
+            <GameSymbol className="mt-4" symbol={winnerSymbol} />
+          </div>
+        )}
+
         <GameField
           cells={cells}
           nextMove={nextMove}
@@ -28,6 +44,7 @@ const HomePage: FC = () => {
           currentMove={currentMove}
           playersCount={playersCount}
           winnerSequence={winnerSequence}
+          winnerSymbol={winnerSymbol}
           className="mt-6"
         />
       </main>

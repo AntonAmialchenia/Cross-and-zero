@@ -43,12 +43,16 @@ interface GameInfoProps {
   className: string;
   playersCount: number;
   currentMove: string;
+  isWinner: boolean;
+  onPlayerTimeOver: (symbol: string) => void;
 }
 
 export const GameInfo: FC<GameInfoProps> = ({
   className,
   playersCount,
   currentMove,
+  isWinner,
+  onPlayerTimeOver,
 }) => {
   return (
     <div
@@ -61,7 +65,8 @@ export const GameInfo: FC<GameInfoProps> = ({
           key={player.id}
           playerInfo={player}
           isRight={index % 2 === 1}
-          isTimerRunning={currentMove === player.symbol}
+          onTimeOver={() => onPlayerTimeOver(player.symbol)}
+          isTimerRunning={currentMove === player.symbol && !isWinner}
         />
       ))}
     </div>

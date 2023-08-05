@@ -6,6 +6,7 @@ interface GameCellProps {
   i: number;
   onClick: () => void;
   isWinner: boolean;
+  disabled: boolean;
 }
 
 export const GameCell: FC<GameCellProps> = ({
@@ -13,9 +14,11 @@ export const GameCell: FC<GameCellProps> = ({
   i,
   onClick,
   isWinner,
+  disabled,
 }) => {
   return (
     <button
+      disabled={disabled}
       onClick={onClick}
       key={i}
       className={clsx(

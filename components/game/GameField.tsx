@@ -14,6 +14,7 @@ interface GameFieldProps {
   handleCellClick: (index: number) => void;
   currentMove: string;
   winnerSequence: boolean | number[];
+  winnerSymbol: string | number | boolean;
 }
 
 export const GameField: FC<GameFieldProps> = ({
@@ -24,6 +25,7 @@ export const GameField: FC<GameFieldProps> = ({
   handleCellClick,
   currentMove,
   winnerSequence,
+  winnerSymbol,
 }) => {
   const actions = (
     <>
@@ -47,8 +49,13 @@ export const GameField: FC<GameFieldProps> = ({
         {cells.map((symbol, index) => (
           <GameCell
             key={index}
+            disabled={!!winnerSymbol}
             i={index}
-            isWinner={Array.isArray(winnerSequence) ? winnerSequence?.includes(index) : false}
+            isWinner={
+              Array.isArray(winnerSequence)
+                ? winnerSequence?.includes(index)
+                : false
+            }
             onClick={() => handleCellClick(index)}>
             {symbol && <GameSymbol symbol={symbol} className="w-5 h-5" />}
           </GameCell>

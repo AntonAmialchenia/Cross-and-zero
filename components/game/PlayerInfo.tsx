@@ -14,14 +14,16 @@ interface PlayerInfoProps {
   };
   isRight: boolean;
   isTimerRunning: boolean;
+  onTimeOver: () => void;
 }
 
 export const PlayerInfo: FC<PlayerInfoProps> = ({
   playerInfo,
   isRight,
   isTimerRunning,
+  onTimeOver,
 }) => {
-  const [seconds, setSeconds] = useState(60);
+  const [seconds, setSeconds] = useState(6);
 
   const minutesString = String(Math.floor(seconds / 60)).padStart(2, "0");
   const secondsString = String(seconds % 60).padStart(2, "0");
@@ -43,10 +45,16 @@ export const PlayerInfo: FC<PlayerInfoProps> = ({
 
       return () => {
         clearInterval(interval);
-        setSeconds(60);
+        setSeconds(6);
       };
     }
   }, [isTimerRunning]);
+
+  useEffect(() => {
+    if (seconds === 0) {
+      onTimeOver();
+    }
+  }, [seconds]);
 
   return (
     <div className="flex gap-3 items-center">

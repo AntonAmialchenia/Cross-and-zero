@@ -28,6 +28,14 @@ export const computedWinner = (
       res[2].push(-fieldSize * (j - gap) + (j - gap) + i);
       res[3].push(fieldSize * (j - gap) + i);
     }
+
+    // Fix бага: при перехоже на следующую строку поля расчитывается победитель и цвет ячеек меняется
+    const x = i % fieldSize;
+    if (x < gap || x >= fieldSize - gap) {
+      res.shift();
+      res.shift();
+      res.shift();
+    }
     return res;
   };
 
