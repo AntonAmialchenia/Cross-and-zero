@@ -7,6 +7,8 @@ import {
   useGameState,
 } from "../components/Game";
 import { GameSymbol } from "../components/Game/GameSymbol";
+import { UiModal } from "../components/uikit/UiModal";
+import { UiButton } from "./../components/uikit/UiButton";
 
 const HomePage: FC = () => {
   const [playersCount] = useState(4);
@@ -36,7 +38,26 @@ const HomePage: FC = () => {
             <GameSymbol className="mt-4" symbol={winnerSymbol} />
           </div>
         )}
-
+        <UiModal
+          width="md"
+          className=""
+          isOpen={winnerSymbol}
+          onClose={() => console.log("close")}>
+          <UiModal.Header className="">Игра завершена!</UiModal.Header>
+          <UiModal.Body className="">
+            <div className="text-sm">
+              Победитель: <span className="text-teal-600">Paromovevg</span>{" "}
+            </div>
+          </UiModal.Body>
+          <UiModal.Footer className="">
+            <UiButton variant="outline" size="md">
+              Вернуться
+            </UiButton>
+            <UiButton variant="primary" size="md">
+              Играть снова
+            </UiButton>
+          </UiModal.Footer>
+        </UiModal>
         <GameField
           cells={cells}
           nextMove={nextMove}
