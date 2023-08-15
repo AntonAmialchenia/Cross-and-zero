@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React, { FC } from "react";
-import { ArrowLeft } from "./icons/ArrowLeft";
-import { Star } from "./icons/Star";
-import { User } from "./icons/User";
-import { Time } from "./icons/Time";
+import { ArrowLeft } from "../GameNew/UI/icons/ArrowLeft";
+import { Star } from "../GameNew/UI/icons/Star";
+import { User } from "../GameNew/UI/icons/User";
+import { Time } from "../GameNew/UI/icons/Time";
 
 interface GmaeTitleProps {
   playersCount: number;

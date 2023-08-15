@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { UiButton } from "../uikit/UiButton";
-import { GameSymbol } from "./GameSymbol";
+import { GameSymbol } from "../GameNew/UI/GameSymbol";
 import { GameFieldLayout } from "./GameFieldLayout";
 import { GameMoveInfo } from "./GameMoveInfo";
 import { GameGrid } from "./GameGrid";

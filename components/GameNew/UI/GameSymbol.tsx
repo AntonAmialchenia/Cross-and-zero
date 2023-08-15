@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { GAME_SYMBOLS } from "./constants";
+import { GAME_SYMBOLS } from "../constants";
 import { Cross } from "./icons/Cross";
 import { Zero } from "./icons/Zero";
 import { Tringle } from "./icons/Tringle";

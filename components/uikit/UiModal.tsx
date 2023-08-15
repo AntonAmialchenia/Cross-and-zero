@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import clsx from "clsx";
 import React, { PropsWithChildren, SyntheticEvent } from "react";
-import { CrossLightIcon } from "../Game/icons/CrossLightIcon";
+import { CrossLightIcon } from "../GameNew/UI/icons/CrossLightIcon";
 import { createPortal } from "react-dom";
 
 interface UiModalProps extends PropsWithChildren {
@@ -19,8 +19,8 @@ export const UiModal = ({
   onClose,
 }: PropsWithChildren<UiModalProps>) => {
   const handleClick = (e: SyntheticEvent<HTMLDivElement>) => {
-    const inModal = e.target.closest("[data-id=modal]");
-    if (inModal) return;
+    const inModal = (e.target as HTMLElement).closest("[data-id=modal]");
+    if (!inModal) return;
 
     onClose();
   };

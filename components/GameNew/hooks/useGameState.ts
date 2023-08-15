@@ -19,7 +19,7 @@ export const useGameState = (playersCount: number) => {
     nextMove === currentMove
       ? currentMove
       : winnerSequence
-      ? winnerSequence[0]
+      ? cells[winnerSequence[0]]
       : false;
 
   console.log(winnerSymbol);

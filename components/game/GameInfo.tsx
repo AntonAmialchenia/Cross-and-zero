@@ -2,7 +2,7 @@ import clsx from "clsx";
 import React, { FC } from "react";
 
 import { PlayerInfo } from "./PlayerInfo";
-import { GAME_SYMBOLS } from "./constants";
+import { GAME_SYMBOLS } from "../GameNew/constants";
 
 import avatar1 from "../Profile/img/1.png";
 import avatar2 from "../Profile/img/2.png";

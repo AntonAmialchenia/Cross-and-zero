@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { GameSymbol } from "./GameSymbol";
+import { GameSymbol } from "../GameNew/UI/GameSymbol";
 
 interface GameMoveInfoProps {
   actions: ReactNode;
