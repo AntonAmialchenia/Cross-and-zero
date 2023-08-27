@@ -1,9 +1,12 @@
+import { InitGameState } from "../../../interfaces";
+
 export const computedWinner = (
-  cells: any[],
+  gameState: InitGameState,
   sequenceSize = 5,
   fieldSize = 19,
 ) => {
   const gap = Math.floor(sequenceSize / 2);
+  const { cells } = gameState;
 
   const compareElements = (indexes: number[]) => {
     let res = true;
